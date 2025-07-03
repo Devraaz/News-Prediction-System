@@ -1,8 +1,10 @@
 import streamlit as st
 import re
 import pickle
+from sklearn.linear_model import LogisticRegression
 
-st.header("News Prediction System", divider=True)
+
+st.header("News Detection System", divider=True)
 st.text("This system has an accuracy of 83%")
 st.page_link("https://www.kaggle.com/datasets/algord/fake-news", label=" Dataset", icon="📙")
 
@@ -37,7 +39,7 @@ def main():
     
 
 
-    if st.button("Predict", type="primary"):
+    if st.button("Detect", type="primary"):
         news = stemming(title) 
         vector_trans = vectorizer.transform([news])
         prediction_test = model.predict(vector_trans)
@@ -47,7 +49,7 @@ def main():
             predict = 'REAL '
 
         
-        st.write(f"The News Prediction is: {predict}")
+        st.write(f"The News Detection is: {predict}")
         st.header(predict)
 
 
